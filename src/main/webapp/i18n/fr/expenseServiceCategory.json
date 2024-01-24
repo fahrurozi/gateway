@@ -1,0 +1,35 @@
+{
+  "gatewayApp": {
+    "expenseServiceCategory": {
+      "home": {
+        "title": "Categories",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Category",
+        "createOrEditLabel": "Créer ou éditer un Category",
+        "notFound": "Aucun Category trouvé"
+      },
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Category {{ id }} ?"
+      },
+      "detail": {
+        "title": "Category"
+      },
+      "id": "Id",
+      "name": "Name",
+      "maxIdr": "Max Idr",
+      "maxAud": "Max Aud",
+      "createdBy": "Created By",
+      "createdDate": "Created Date",
+      "lastModifiedBy": "Last Modified By",
+      "lastModifiedDate": "Last Modified Date",
+      "recordStatusId": "Record Status Id"
+    }
+  },
+  "expenseServiceApp": {
+    "expenseServiceCategory": {
+      "created": "Un nouveau Category a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Category avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Category avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

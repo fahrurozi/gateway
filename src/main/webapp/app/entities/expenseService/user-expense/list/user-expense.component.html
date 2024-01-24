@@ -1,0 +1,166 @@
+<div>
+  <h2 id="page-heading" data-cy="UserExpenseHeading">
+    <span jhiTranslate="gatewayApp.expenseServiceUserExpense.home.title">User Expenses</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gatewayApp.expenseServiceUserExpense.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-user-expense"
+        [routerLink]="['/user-expense/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gatewayApp.expenseServiceUserExpense.home.createLabel">Create a new User Expense</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="userExpenses?.length === 0">
+    <span jhiTranslate="gatewayApp.expenseServiceUserExpense.home.notFound">No User Expenses found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="userExpenses && userExpenses.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceUserExpense.id">Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="date">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceUserExpense.date">Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="category">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceUserExpense.category">Category</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="total">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceUserExpense.total">Total</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="evidence">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceUserExpense.evidence">Evidence</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="exchangeRate">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceUserExpense.exchangeRate">Exchange Rate</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="acceptedTotal">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceUserExpense.acceptedTotal">Accepted Total</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="status">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceUserExpense.status">Status</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceUserExpense.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedDate">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceUserExpense.lastModifiedDate">Last Modified Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="recordStatusId">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceUserExpense.recordStatusId">Record Status Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdBy">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceUserExpense.createdBy">Created By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedBy">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceUserExpense.lastModifiedBy">Last Modified By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="employee2.id">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceUserExpense.employee2">Employee 2</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let userExpense of userExpenses; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/user-expense', userExpense.id, 'view']">{{ userExpense.id }}</a>
+          </td>
+          <td>{{ userExpense.date | formatMediumDatetime }}</td>
+          <td>{{ userExpense.category }}</td>
+          <td>{{ userExpense.total }}</td>
+          <td>{{ userExpense.evidence }}</td>
+          <td>{{ userExpense.exchangeRate }}</td>
+          <td>{{ userExpense.acceptedTotal }}</td>
+          <td jhiTranslate="{{ 'gatewayApp.Status.' + userExpense.status }}">{{ userExpense.status }}</td>
+          <td>{{ userExpense.createdDate | formatMediumDatetime }}</td>
+          <td>{{ userExpense.lastModifiedDate | formatMediumDatetime }}</td>
+          <td>{{ userExpense.recordStatusId }}</td>
+          <td>{{ userExpense.createdBy }}</td>
+          <td>{{ userExpense.lastModifiedBy }}</td>
+          <td>
+            <div *ngIf="userExpense.employee2">
+              <a [routerLink]="['/employee-2', userExpense.employee2.id, 'view']">{{ userExpense.employee2.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <a [routerLink]="['/user-expense', userExpense.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </a>
+
+              <a [routerLink]="['/user-expense', userExpense.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </a>
+
+              <button type="submit" (click)="delete(userExpense)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

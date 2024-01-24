@@ -1,0 +1,40 @@
+{
+  "applications": ["gateway", "expenseService"],
+  "changelogDate": "20240124040447",
+  "clientRootFolder": "expenseService",
+  "databaseType": "sql",
+  "dto": "mapstruct",
+  "entityTableName": "employee_2",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "UUID",
+      "fieldValidateRules": ["unique"]
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "microserviceName": "expenseService",
+  "name": "Employee2",
+  "relationships": [
+    {
+      "otherEntityName": "userExpense",
+      "otherEntityRelationshipName": "employee2",
+      "relationshipName": "userExpense",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "expenseActivity",
+      "otherEntityRelationshipName": "employee2",
+      "relationshipName": "expenseActivity",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -1,0 +1,30 @@
+{
+  "gatewayApp": {
+    "expenseServiceEmployee2": {
+      "home": {
+        "title": "Employee2s",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Employee 2",
+        "createOrEditLabel": "Créer ou éditer un Employee 2",
+        "notFound": "Aucun Employee 2 trouvé"
+      },
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Employee 2 {{ id }} ?"
+      },
+      "detail": {
+        "title": "Employee 2"
+      },
+      "id": "Id",
+      "name": "Name",
+      "userExpense": "User Expense",
+      "expenseActivity": "Expense Activity"
+    }
+  },
+  "expenseServiceApp": {
+    "expenseServiceEmployee2": {
+      "created": "Un nouveau Employee 2 a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Employee 2 avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Employee 2 avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

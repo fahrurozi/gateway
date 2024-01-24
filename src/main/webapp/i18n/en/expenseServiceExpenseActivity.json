@@ -1,0 +1,35 @@
+{
+  "gatewayApp": {
+    "expenseServiceExpenseActivity": {
+      "home": {
+        "title": "Expense Activities",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Expense Activity",
+        "createOrEditLabel": "Create or edit a Expense Activity",
+        "notFound": "No Expense Activities found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Expense Activity {{ id }}?"
+      },
+      "detail": {
+        "title": "Expense Activity"
+      },
+      "id": "Id",
+      "description": "Description",
+      "createdDate": "Created Date",
+      "createdBy": "Created By",
+      "lastModifiedBy": "Last Modified By",
+      "lastModifiedDate": "Last Modified Date",
+      "recordStatusId": "Record Status Id",
+      "userExpense": "User Expense",
+      "employee2": "Employee 2"
+    }
+  },
+  "expenseServiceApp": {
+    "expenseServiceExpenseActivity": {
+      "created": "A new Expense Activity is created with identifier {{ param }}",
+      "updated": "A Expense Activity is updated with identifier {{ param }}",
+      "deleted": "A Expense Activity is deleted with identifier {{ param }}"
+    }
+  }
+}

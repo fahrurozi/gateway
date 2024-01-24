@@ -1,0 +1,135 @@
+<div>
+  <h2 id="page-heading" data-cy="ExpenseActivityHeading">
+    <span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.home.title">Expense Activities</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-expense-activity"
+        [routerLink]="['/expense-activity/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.home.createLabel">Create a new Expense Activity</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="expenseActivities?.length === 0">
+    <span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.home.notFound">No Expense Activities found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="expenseActivities && expenseActivities.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.id">Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="description">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.description">Description</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdDate">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.createdDate">Created Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="createdBy">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.createdBy">Created By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedBy">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.lastModifiedBy">Last Modified By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="lastModifiedDate">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.lastModifiedDate">Last Modified Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="recordStatusId">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.recordStatusId">Record Status Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="userExpense.id">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.userExpense">User Expense</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="employee2.id">
+            <div class="d-flex">
+              <span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.employee2">Employee 2</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let expenseActivity of expenseActivities; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/expense-activity', expenseActivity.id, 'view']">{{ expenseActivity.id }}</a>
+          </td>
+          <td>{{ expenseActivity.description }}</td>
+          <td>{{ expenseActivity.createdDate | formatMediumDatetime }}</td>
+          <td>{{ expenseActivity.createdBy }}</td>
+          <td>{{ expenseActivity.lastModifiedBy }}</td>
+          <td>{{ expenseActivity.lastModifiedDate | formatMediumDatetime }}</td>
+          <td>{{ expenseActivity.recordStatusId }}</td>
+          <td>
+            <div *ngIf="expenseActivity.userExpense">
+              <a [routerLink]="['/user-expense', expenseActivity.userExpense.id, 'view']">{{ expenseActivity.userExpense.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="expenseActivity.employee2">
+              <a [routerLink]="['/employee-2', expenseActivity.employee2.id, 'view']">{{ expenseActivity.employee2.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <a [routerLink]="['/expense-activity', expenseActivity.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </a>
+
+              <a [routerLink]="['/expense-activity', expenseActivity.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </a>
+
+              <button type="submit" (click)="delete(expenseActivity)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

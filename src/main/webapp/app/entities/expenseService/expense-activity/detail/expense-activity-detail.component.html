@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="expenseActivity">
+      <h2 data-cy="expenseActivityDetailsHeading">
+        <span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.detail.title">Expense Activity</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.id">Id</span></dt>
+        <dd>
+          <span>{{ expenseActivity.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.description">Description</span></dt>
+        <dd>
+          <span>{{ expenseActivity.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ expenseActivity.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ expenseActivity.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ expenseActivity.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+          <span>{{ expenseActivity.lastModifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.recordStatusId">Record Status Id</span></dt>
+        <dd>
+          <span>{{ expenseActivity.recordStatusId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.userExpense">User Expense</span></dt>
+        <dd>
+          <div *ngIf="expenseActivity.userExpense">
+            <a [routerLink]="['/user-expense', expenseActivity.userExpense.id, 'view']">{{ expenseActivity.userExpense.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expenseServiceExpenseActivity.employee2">Employee 2</span></dt>
+        <dd>
+          <div *ngIf="expenseActivity.employee2">
+            <a [routerLink]="['/employee-2', expenseActivity.employee2.id, 'view']">{{ expenseActivity.employee2.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/expense-activity', expenseActivity.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

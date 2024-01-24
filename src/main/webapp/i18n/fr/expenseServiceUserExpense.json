@@ -1,0 +1,41 @@
+{
+  "gatewayApp": {
+    "expenseServiceUserExpense": {
+      "home": {
+        "title": "UserExpenses",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau User Expense",
+        "createOrEditLabel": "Créer ou éditer un User Expense",
+        "notFound": "Aucun User Expense trouvé"
+      },
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le User Expense {{ id }} ?"
+      },
+      "detail": {
+        "title": "User Expense"
+      },
+      "id": "Id",
+      "date": "Date",
+      "category": "Category",
+      "total": "Total",
+      "evidence": "Evidence",
+      "exchangeRate": "Exchange Rate",
+      "acceptedTotal": "Accepted Total",
+      "status": "Status",
+      "createdDate": "Created Date",
+      "lastModifiedDate": "Last Modified Date",
+      "recordStatusId": "Record Status Id",
+      "createdBy": "Created By",
+      "lastModifiedBy": "Last Modified By",
+      "employee2": "Employee 2",
+      "expenseActivity": "Expense Activity"
+    }
+  },
+  "expenseServiceApp": {
+    "expenseServiceUserExpense": {
+      "created": "Un nouveau User Expense a été créé avec l'identifiant {{ param }}",
+      "updated": "Le User Expense avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le User Expense avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

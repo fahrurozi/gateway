@@ -1,0 +1,35 @@
+{
+  "gatewayApp": {
+    "expenseServiceExpenseActivity": {
+      "home": {
+        "title": "ExpenseActivities",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Expense Activity",
+        "createOrEditLabel": "Créer ou éditer un Expense Activity",
+        "notFound": "Aucun Expense Activity trouvé"
+      },
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Expense Activity {{ id }} ?"
+      },
+      "detail": {
+        "title": "Expense Activity"
+      },
+      "id": "Id",
+      "description": "Description",
+      "createdDate": "Created Date",
+      "createdBy": "Created By",
+      "lastModifiedBy": "Last Modified By",
+      "lastModifiedDate": "Last Modified Date",
+      "recordStatusId": "Record Status Id",
+      "userExpense": "User Expense",
+      "employee2": "Employee 2"
+    }
+  },
+  "expenseServiceApp": {
+    "expenseServiceExpenseActivity": {
+      "created": "Un nouveau Expense Activity a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Expense Activity avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Expense Activity avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

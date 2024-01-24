@@ -1,0 +1,35 @@
+{
+  "gatewayApp": {
+    "notificationServiceNotification": {
+      "home": {
+        "title": "Notifications",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Notification",
+        "createOrEditLabel": "Create or edit a Notification",
+        "notFound": "No Notifications found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Notification {{ id }}?"
+      },
+      "detail": {
+        "title": "Notification"
+      },
+      "id": "Id",
+      "userId": "User Id",
+      "description": "Description",
+      "isShow": "Is Show",
+      "createdBy": "Created By",
+      "createdDate": "Created Date",
+      "lastModifiedBy": "Last Modified By",
+      "lastModifiedDate": "Last Modified Date",
+      "recordStatusId": "Record Status Id"
+    }
+  },
+  "notificationServiceApp": {
+    "notificationServiceNotification": {
+      "created": "A new Notification is created with identifier {{ param }}",
+      "updated": "A Notification is updated with identifier {{ param }}",
+      "deleted": "A Notification is deleted with identifier {{ param }}"
+    }
+  }
+}

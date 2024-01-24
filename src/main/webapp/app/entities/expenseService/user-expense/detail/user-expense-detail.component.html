@@ -1,0 +1,84 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="userExpense">
+      <h2 data-cy="userExpenseDetailsHeading">
+        <span jhiTranslate="gatewayApp.expenseServiceUserExpense.detail.title">User Expense</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="gatewayApp.expenseServiceUserExpense.id">Id</span></dt>
+        <dd>
+          <span>{{ userExpense.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expenseServiceUserExpense.date">Date</span></dt>
+        <dd>
+          <span>{{ userExpense.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expenseServiceUserExpense.category">Category</span></dt>
+        <dd>
+          <span>{{ userExpense.category }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expenseServiceUserExpense.total">Total</span></dt>
+        <dd>
+          <span>{{ userExpense.total }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expenseServiceUserExpense.evidence">Evidence</span></dt>
+        <dd>
+          <span>{{ userExpense.evidence }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expenseServiceUserExpense.exchangeRate">Exchange Rate</span></dt>
+        <dd>
+          <span>{{ userExpense.exchangeRate }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expenseServiceUserExpense.acceptedTotal">Accepted Total</span></dt>
+        <dd>
+          <span>{{ userExpense.acceptedTotal }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expenseServiceUserExpense.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'gatewayApp.Status.' + userExpense.status }}">{{ userExpense.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expenseServiceUserExpense.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ userExpense.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expenseServiceUserExpense.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+          <span>{{ userExpense.lastModifiedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expenseServiceUserExpense.recordStatusId">Record Status Id</span></dt>
+        <dd>
+          <span>{{ userExpense.recordStatusId }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expenseServiceUserExpense.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ userExpense.createdBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expenseServiceUserExpense.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+          <span>{{ userExpense.lastModifiedBy }}</span>
+        </dd>
+        <dt><span jhiTranslate="gatewayApp.expenseServiceUserExpense.employee2">Employee 2</span></dt>
+        <dd>
+          <div *ngIf="userExpense.employee2">
+            <a [routerLink]="['/employee-2', userExpense.employee2.id, 'view']">{{ userExpense.employee2.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/user-expense', userExpense.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
