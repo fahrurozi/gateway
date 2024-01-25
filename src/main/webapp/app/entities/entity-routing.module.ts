@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import {Authority} from "../config/authority.constants";
+import {UserRouteAccessService} from "../core/auth/user-route-access.service";
 
 @NgModule({
   imports: [
     RouterModule.forChild([
       {
         path: 'category',
-        data: { pageTitle: 'gatewayApp.expenseServiceCategory.home.title' },
+        canActivate: [UserRouteAccessService],
+        data: { pageTitle: 'gatewayApp.expenseServiceCategory.home.title' , authorities: [Authority.ADMIN]},
         loadChildren: () => import('./expenseService/category/category.routes'),
       },
       {

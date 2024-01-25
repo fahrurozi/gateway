@@ -50,7 +50,7 @@
       "fieldName": "status",
       "fieldType": "Status",
       "fieldValidateRules": ["required"],
-      "fieldValues": "NotSubmitted,MoveToNextPeriode,PartiallyApprovedOPAdmin,FullyApprovedOpAdmin,RejectedOPAdmin,PartiallyApprovedDOF,FullyApprovedDov,RejectedDOF,Revision"
+      "fieldValues": "NotSubmitted,Waiting,MoveToNextPeriode,PartiallyApprovedOPAdmin,FullyApprovedOpAdmin,RejectedOPAdmin,PartiallyApprovedDOF,FullyApprovedDov,RejectedDOF,Revision"
     },
     {
       "fieldName": "createdDate",

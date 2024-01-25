@@ -7,11 +7,19 @@ import SharedModule from 'app/shared/shared.module';
 import { SortDirective, SortByDirective } from 'app/shared/sort';
 import { DurationPipe, FormatMediumDatetimePipe, FormatMediumDatePipe } from 'app/shared/date';
 import { FormsModule } from '@angular/forms';
-import { ASC, DESC, SORT, ITEM_DELETED_EVENT, DEFAULT_SORT_DATA } from 'app/config/navigation.constants';
+import {
+  ASC,
+  DESC,
+  SORT,
+  ITEM_DELETED_EVENT,
+  DEFAULT_SORT_DATA,
+  ITEM_SUBMITTED_EVENT
+} from 'app/config/navigation.constants';
 import { SortService } from 'app/shared/sort/sort.service';
 import { IUserExpense } from '../user-expense.model';
 import { EntityArrayResponseType, UserExpenseService } from '../service/user-expense.service';
 import { UserExpenseDeleteDialogComponent } from '../delete/user-expense-delete-dialog.component';
+import {UserExpenseSubmitDialogComponent} from "../submit/user-expense-submit-dialog.component";
 
 @Component({
   standalone: true,
@@ -63,6 +71,22 @@ export class UserExpenseComponent implements OnInit {
           this.onResponseSuccess(res);
         },
       });
+  }
+
+  submit(userExpense: IUserExpense): void {
+    const modalRef = this.modalService.open(UserExpenseSubmitDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.userExpense = userExpense;
+    // unsubscribe not needed because closed completes on modal close
+    modalRef.closed
+    .pipe(
+      filter(reason => reason === ITEM_SUBMITTED_EVENT),
+      switchMap(() => this.loadFromBackendWithRouteInformations()),
+    )
+    .subscribe({
+      next: (res: EntityArrayResponseType) => {
+        this.onResponseSuccess(res);
+      },
+    });
   }
 
   load(): void {

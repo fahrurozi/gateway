@@ -11,6 +11,9 @@
       "delete": {
         "question": "Are you sure you want to delete User Expense {{ id }}?"
       },
+      "submit" : {
+        "question": "Are you sure you want to submit User Expense {{ id }}?"
+      },
       "detail": {
         "title": "User Expense"
       },
@@ -35,7 +38,8 @@
     "expenseServiceUserExpense": {
       "created": "A new User Expense is created with identifier {{ param }}",
       "updated": "A User Expense is updated with identifier {{ param }}",
-      "deleted": "A User Expense is deleted with identifier {{ param }}"
+      "deleted": "A User Expense is deleted with identifier {{ param }}",
+      "submitted": "A User Expense is submitted with identifier {{ param }}"
     }
   }
 }

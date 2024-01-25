@@ -1,6 +1,8 @@
 export enum Status {
   NotSubmitted = 'NotSubmitted',
 
+  Waiting = 'Waiting',
+
   MoveToNextPeriode = 'MoveToNextPeriode',
 
   PartiallyApprovedOPAdmin = 'PartiallyApprovedOPAdmin',

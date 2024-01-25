@@ -3,6 +3,7 @@
     "Status": {
       "null": "",
       "NotSubmitted": "NotSubmitted",
+      "Waiting": "Waiting",
       "MoveToNextPeriode": "MoveToNextPeriode",
       "PartiallyApprovedOPAdmin": "PartiallyApprovedOPAdmin",
       "FullyApprovedOpAdmin": "FullyApprovedOpAdmin",

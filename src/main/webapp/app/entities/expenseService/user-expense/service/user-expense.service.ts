@@ -75,6 +75,10 @@ export class UserExpenseService {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
 
+  changeStatus(id: string, statusData: { status: string }): Observable<HttpResponse<{}>> {
+    return this.http.put(`${this.resourceUrl}/change-status/${id}`, statusData, { observe: 'response' });
+  }
+
   getUserExpenseIdentifier(userExpense: Pick<IUserExpense, 'id'>): string {
     return userExpense.id;
   }

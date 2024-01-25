@@ -6,6 +6,7 @@ import { UserExpenseComponent } from './list/user-expense.component';
 import { UserExpenseDetailComponent } from './detail/user-expense-detail.component';
 import { UserExpenseUpdateComponent } from './update/user-expense-update.component';
 import UserExpenseResolve from './route/user-expense-routing-resolve.service';
+import {UserExpenseCreateComponent} from "./create/user-expense-create.component";
 
 const userExpenseRoute: Routes = [
   {
@@ -19,6 +20,14 @@ const userExpenseRoute: Routes = [
   {
     path: ':id/view',
     component: UserExpenseDetailComponent,
+    resolve: {
+      userExpense: UserExpenseResolve,
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
+    path: 'create',
+    component: UserExpenseCreateComponent,
     resolve: {
       userExpense: UserExpenseResolve,
     },
